@@ -114,6 +114,11 @@ public class mailAttachment {
             BodyPart text = new MimeBodyPart();
             text.setText("Hello World, \nExample of sending email in Java through SMTP server provided by the host provider.");
 
+            // Email: Body Part (Html)
+            String htmlMessage = "<h4> Making sure html mail too</h4>";
+            BodyPart html = new MimeBodyPart();
+            html.setContent(htmlMessage, "text/html");
+
             // Attachment Part
             MimeBodyPart attach = new MimeBodyPart();
             String filename = "/usr/local/bin/JavaAttachmentfile.txt"; // file source
@@ -124,6 +129,7 @@ public class mailAttachment {
             // Multipart object and add MimeBodyPart object to this object
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(text);
+            multipart.addBodyPart(html);
             multipart.addBodyPart(attach);
 
             // Set the Multipart object to the message object
